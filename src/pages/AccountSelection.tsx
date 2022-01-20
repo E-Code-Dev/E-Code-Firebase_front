@@ -8,6 +8,8 @@ import { useAuthContext } from '@contexts/AuthContext'
 import { AutoStories, HistoryEdu } from '@mui/icons-material'
 import { ECodeIconBox, AccountSelectionHead } from '@styles/pages/AccountSelectionStyled'
 
+import eCodeIcon from '@images/e-code-icon.svg'
+
 const AccountSelection: VFC = () => {
   const { corderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
@@ -21,7 +23,7 @@ const AccountSelection: VFC = () => {
       <Stack spacing={4}>
         <Paper sx={{ mt: '64px' }} elevation={2}>
           <ECodeIconBox>
-            <img src="../../src/assets/images/e-code-icon.svg" alt="E-Codeのアイコン" />
+            <img src={eCodeIcon} alt="E-Codeのアイコン" />
           </ECodeIconBox>
           <AccountSelectionHead>E-Codeへようこそ(⌒∇⌒)</AccountSelectionHead>
         </Paper>
