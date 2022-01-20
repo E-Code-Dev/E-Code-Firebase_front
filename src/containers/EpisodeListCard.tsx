@@ -1,8 +1,13 @@
 // React
+import { useState } from 'react'
 import type { VFC } from 'react'
 
 // React Router
 import { Link } from 'react-router-dom'
+
+// Firebase
+import { storage } from '@lib/firebase'
+import { getDownloadURL, ref } from 'firebase/storage'
 
 // Mui
 import {
@@ -49,6 +54,8 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
     sliceEndNumber
   } = props
 
+  const [contributorAvator, setContributorAvator] = useState('')
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
       <Stack spacing={2}>
@@ -79,13 +86,23 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
               .shift()
               ?.replace(/-/g, '/')
 
+            const storageRef = ref(storage, contributorImage)
+
+            getDownloadURL(storageRef)
+              .then((url) => {
+                setContributorAvator(url)
+              })
+              .catch(() => {
+                // Handle any errors
+              })
+
             return (
               <Accordion key={id}>
                 <AccordionSummary>
                   <div>
                     <ContributorInfo>
                       <Avatar
-                        src={contributorImage}
+                        src={contributorAvator}
                         alt="アカウントアイコン"
                         sx={{ width: 64, height: 64 }}
                       />
