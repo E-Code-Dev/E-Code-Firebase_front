@@ -6,6 +6,10 @@ import type { VFC, MouseEvent, ChangeEvent } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { Params } from 'react-router-dom'
 
+// Firebase
+import { storage } from '@lib/firebase'
+import { getDownloadURL, ref } from 'firebase/storage'
+
 // Mui
 import { Avatar, Box, Button } from '@mui/material'
 import { AddComment } from '@mui/icons-material'
@@ -45,6 +49,8 @@ const EpisodeDetail: VFC = () => {
   const [episodeId, setEpisodeId] = useState<number>(0)
 
   const [episodeData, setEpisodeData] = useState<EpisodeData | undefined>()
+
+  const [contributorAvator, setContributorAvator] = useState('')
 
   const contributorName = corderCurrentUser?.name
   const contributorImage = corderCurrentUser?.fileUrl
@@ -133,17 +139,25 @@ const EpisodeDetail: VFC = () => {
     episodeContent.innerHTML = replaceNewLine
   }
 
+  if (episodeData?.contributorImage) {
+    const storageRef = ref(storage, episodeData.contributorImage)
+
+    getDownloadURL(storageRef)
+      .then((url) => {
+        setContributorAvator(url)
+      })
+      .catch(() => {
+        // Handle any errors
+      })
+  }
+
   return (
     <Layout>
       <ECodeNavBar />
       <EpisodeDetailPaper>
         {errorMessage && <p>{errorMessage}</p>}
         <ContributorInfo>
-          <Avatar
-            src={episodeData?.contributorImage}
-            alt="アカウントアイコン"
-            sx={{ width: 64, height: 64 }}
-          />
+          <Avatar src={contributorAvator} alt="アカウントアイコン" sx={{ width: 64, height: 64 }} />
           <ContributorInfoName>{episodeData?.contributorName}</ContributorInfoName>
         </ContributorInfo>
 

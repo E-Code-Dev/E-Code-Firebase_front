@@ -2,6 +2,10 @@
 import { useState } from 'react'
 import type { VFC, MouseEvent } from 'react'
 
+// Firebase
+import { storage } from '@lib/firebase'
+import { getDownloadURL, ref } from 'firebase/storage'
+
 // Mui
 import { Box, IconButton, Menu, Typography, MenuItem, Avatar } from '@mui/material'
 
@@ -23,6 +27,8 @@ const LoggedInHeader: VFC<LoggedInHeaderProps> = (props) => {
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
 
+  const [corderAvator, setCorderAvator] = useState('')
+
   const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -31,13 +37,23 @@ const LoggedInHeader: VFC<LoggedInHeaderProps> = (props) => {
     setAnchorElUser(null)
   }
 
+  const storageRef = ref(storage, corderCurrentUser?.fileUrl)
+
+  getDownloadURL(storageRef)
+    .then((url) => {
+      setCorderAvator(url)
+    })
+    .catch(() => {
+      // Handle any errors
+    })
+
   return (
     <BaseHeader>
       <Box>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar
             alt="Logged In User Avater"
-            src={(corderCurrentUser?.fileUrl || readerCurrentUser?.photoURL) ?? ''}
+            src={(corderAvator || readerCurrentUser?.photoURL) ?? ''}
           />
         </IconButton>
         <Menu

@@ -8,8 +8,9 @@ import { Link, Navigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import type { SubmitHandler } from 'react-hook-form'
 
-// AWS
-import AWS from 'aws-sdk'
+// Firebase
+import { storage } from '@lib/firebase'
+import { ref, StorageError, uploadBytes } from 'firebase/storage'
 
 // Uuid
 import { v4 as uuidv4 } from 'uuid'
@@ -35,19 +36,6 @@ import { useOAuthContext } from '@contexts/OAuthContext'
 
 // Types
 import { IFormValues } from '../types/FormValues'
-
-const S3_BUCKET = import.meta.env.VITE_S3_BUCKET
-const REGION = import.meta.env.VITE_S3_REGION
-
-AWS.config.update({
-  accessKeyId: import.meta.env.VITE_S3_ACCESS_KEY,
-  secretAccessKey: import.meta.env.VITE_S3_SECRET_ACCESS_KEY
-})
-
-const ECodeBucket = new AWS.S3({
-  params: { Bucket: S3_BUCKET },
-  region: REGION
-})
 
 const CorderSignUp: VFC = () => {
   const { corderCurrentUser } = useAuthContext()
@@ -79,21 +67,16 @@ const CorderSignUp: VFC = () => {
     const fileExtension = file.name.split('.').pop()
 
     if (fileExtension !== undefined) {
-      const key = `${uuidv4()}.${fileExtension}`
-      setFileUrl(`https://e-code.s3.ap-northeast-1.amazonaws.com/${key}`)
+      const fileName = `${uuidv4()}.${fileExtension}`
 
-      const params = {
-        ACL: 'public-read',
-        Body: file,
-        Bucket: S3_BUCKET,
-        Key: key
-      }
-
-      ECodeBucket.putObject(params).send((erorr) => {
-        if (erorr) {
-          setErrorMessage(erorr.message)
+      const storageRef = ref(storage, fileName)
+      uploadBytes(storageRef, file).catch((error: StorageError) => {
+        if (error) {
+          setErrorMessage(error.message)
         }
       })
+
+      setFileUrl(fileName)
     }
   }
 
