@@ -1,0 +1,13 @@
+<svg id="Page-1" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <g id="Artboard-1">
+    <g id="google_buttn">
+      <g id="logo_googleg_48dp">
+        <path id="Shape" d="M94.56,56.455a41.37,41.37,0,0,0-.655-7.364H60V63.016H79.375a16.561,16.561,0,0,1-7.184,10.865v9.033H83.825c6.808-6.267,10.735-15.5,10.735-26.46Z" transform="translate(-24 -19.636)" fill="#4285f4" fill-rule="evenodd"/>
+        <path id="Shape-2" data-name="Shape" d="M38.553,100.56c9.72,0,17.869-3.224,23.825-8.722L50.744,82.805A21.719,21.719,0,0,1,18.409,71.4H6.382v9.327A35.986,35.986,0,0,0,38.553,100.56Z" transform="translate(-2.553 -28.56)" fill="#34a853" fill-rule="evenodd"/>
+        <path id="Shape-3" data-name="Shape" d="M15.856,56.062a21.283,21.283,0,0,1,0-13.68V33.055H3.829a36.046,36.046,0,0,0,0,32.335l12.027-9.327Z" transform="translate(0 -13.222)" fill="#fbbc05" fill-rule="evenodd"/>
+        <path id="Shape-4" data-name="Shape" d="M38.553,14.318A19.448,19.448,0,0,1,52.315,19.7L62.64,9.376A34.6,34.6,0,0,0,38.553,0,35.986,35.986,0,0,0,6.382,19.833L18.409,29.16A21.455,21.455,0,0,1,38.553,14.318Z" transform="translate(-2.553)" fill="#ea4335" fill-rule="evenodd"/>
+        <path id="Shape-5" data-name="Shape" d="M0,0H72V72H0Z" fill="none" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

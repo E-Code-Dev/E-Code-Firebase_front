@@ -1,0 +1,92 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    // 「.ts」と「.tsx」を認識させる。
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+      },
+      "typescript": {
+        "project": "tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    // POSSIBLE PROBLEMS
+    // 誤ったエラーを報告する可能性があるため、基本ルールを無効にする必要がある。
+    "no-use-before-define": "off",
+
+    // SUGGESTIONS
+    "arrow-body-style": ["error", "always"],
+
+    // LAYOUT & FORMATTING
+    // const { hoge, hogehoge, hogehogehoge } = props;の形で改行せずに記述してもエラーを出さないように。
+    "object-curly-newline": ["off"],
+
+    // REACT
+    // 「.jsx」と「.tsx]でのみJSX構文を許可。
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    // propsでスプレッド演算子を許可。
+    "react/jsx-props-no-spreading": ["off"],
+    // 「props」の型チェックはTypeScript側で行う。
+    "react/prop-types": "off",
+    // React v17から「import React from 'react'」が必要なくなったためエラーを出さないための設定。
+    "react/react-in-jsx-scope": "off",
+
+    // TYPESCRIPT
+    "@typescript-eslint/no-use-before-define": ["error"],
+
+    // OTHER
+    // 拡張子を表示しない。
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "d.ts": "never"
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  }
+}
