@@ -33,6 +33,7 @@ export const ProfileButton = styled.div`
 export const DoneButton = styled(Button)`
   margin-left: 32px;
   @media screen and (max-width: 600px) {
+    margin-left: 0;
     margin-bottom: 32px;
   }
 `
