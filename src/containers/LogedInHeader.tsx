@@ -37,15 +37,16 @@ const LoggedInHeader: VFC<LoggedInHeaderProps> = (props) => {
     setAnchorElUser(null)
   }
 
-  const storageRef = ref(storage, corderCurrentUser?.fileUrl)
-
-  getDownloadURL(storageRef)
-    .then((url) => {
-      setCorderAvator(url)
-    })
-    .catch(() => {
-      // Handle any errors
-    })
+  if (corderCurrentUser?.fileUrl) {
+    const storageRef = ref(storage, corderCurrentUser?.fileUrl)
+    getDownloadURL(storageRef)
+      .then((url) => {
+        setCorderAvator(url)
+      })
+      .catch(() => {
+        // Handle any errors
+      })
+  }
 
   return (
     <BaseHeader>
