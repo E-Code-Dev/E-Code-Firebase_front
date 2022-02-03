@@ -4,11 +4,16 @@ import type { VFC } from 'react'
 import BaseOAuthButton from '@components/BaseOAuthButton'
 
 // Containers
-import { facebookAuth, githubAuth, googleAuth, twitterAuth } from '@containers/OAuth'
+import {
+  facebookAuth,
+  githubAuth,
+  googleAuth
+  // twitterAuth
+} from '@containers/OAuth'
 
 // Images
 import googleIcon from '@images/google-icon.svg'
-import twitterIcon from '@images/twitter-icon.svg'
+// import twitterIcon from '@images/twitter-icon.svg'
 import facebookIcon from '@images/facebook-icon.svg'
 import githubIcon from '@images/github-icon.svg'
 import OAuthAllButtonDiv from './styled'
@@ -21,11 +26,11 @@ const OAuthAllButton: VFC = () => {
         oAuthIcon={googleIcon}
         oAuthAlt="Googleのアイコン"
       />
-      <BaseOAuthButton
+      {/* <BaseOAuthButton
         serviceAuth={twitterAuth}
         oAuthIcon={twitterIcon}
         oAuthAlt="twitterのアイコン"
-      />
+      /> */}
       <BaseOAuthButton
         serviceAuth={facebookAuth}
         oAuthIcon={facebookIcon}

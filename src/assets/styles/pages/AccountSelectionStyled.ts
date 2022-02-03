@@ -6,11 +6,11 @@ export const ECodeIconBox = styled(Box)`
   margin: 0 auto;
   padding: 64px;
   @media screen and (max-width: 600px) {
-    padding: 32px;
+    padding: 48px;
   }
 `
 
 export const AccountSelectionHead = styled.h2`
   text-align: center;
-  margin: 32px 0 64px 0;
+  margin: 32px 0 48px 0;
 `
