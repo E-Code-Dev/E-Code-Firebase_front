@@ -21,7 +21,7 @@ const AccountSelection: VFC = () => {
   return (
     <Container maxWidth="sm">
       <Stack spacing={4}>
-        <Paper sx={{ mt: '64px' }} elevation={2}>
+        <Paper sx={{ mt: '48px' }} elevation={2}>
           <ECodeIconBox>
             <img src={eCodeIcon} alt="E-Codeのアイコン" />
           </ECodeIconBox>
