@@ -76,7 +76,9 @@ const CorderSignUp: VFC = () => {
         }
       })
 
-      setFileUrl(fileName)
+      setFileUrl(
+        `https://firebasestorage.googleapis.com/v0/b/e-code-c8a07.appspot.com/o/${fileName}?alt=media`
+      )
     }
   }
 
