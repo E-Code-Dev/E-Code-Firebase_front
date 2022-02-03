@@ -1,9 +1,4 @@
-import { useState } from 'react'
 import type { VFC } from 'react'
-
-// Firebase
-import { storage } from '@lib/firebase'
-import { getDownloadURL, ref } from 'firebase/storage'
 
 // Mui
 import { Avatar, IconButton, Stack } from '@mui/material'
@@ -31,8 +26,6 @@ type EpisodeCommentsProps = {
 const EpisodeComments: VFC<EpisodeCommentsProps> = (props) => {
   const { episodeComments, handleEpisodeCommentDelete, corderCurrentUser } = props
 
-  const [contributorAvator, setContributorAvator] = useState('')
-
   return (
     <div>
       <Stack spacing={2}>
@@ -46,20 +39,11 @@ const EpisodeComments: VFC<EpisodeCommentsProps> = (props) => {
               .shift()
               ?.replace(/-/g, '/')
 
-            const storageRef = ref(storage, contributorImage)
-
-            getDownloadURL(storageRef)
-              .then((url) => {
-                setContributorAvator(url)
-              })
-              .catch(() => {
-                // Handle any errors
-              })
             return (
               <div key={id}>
                 <div>
                   <ContributorInfo>
-                    <Avatar src={contributorAvator} alt="コメント投稿者のアバター" />
+                    <Avatar src={contributorImage} alt="コメント投稿者のアバター" />
                     <CommentContributorInfoName>{contributorName}</CommentContributorInfoName>
                   </ContributorInfo>
                   <CommentContent>{content}</CommentContent>
