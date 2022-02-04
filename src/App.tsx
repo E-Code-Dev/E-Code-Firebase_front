@@ -10,8 +10,8 @@ import { OAuthContextProvider } from '@contexts/OAuthContext'
 
 // Pages
 import AccountSelection from '@pages/AccountSelection'
-import CorderLogin from '@pages/CorderLogIn'
-import CorderSignUp from '@pages/CorderSignUp'
+import CoderLogin from '@pages/CoderLogIn'
+import CoderSignUp from '@pages/CoderSignUp'
 import ReaderLogin from '@pages/ReaderLogin'
 import ReaderSignUp from '@pages/ReaderSignUp'
 import TimeLine from '@pages/TimeLine'
@@ -35,8 +35,8 @@ const App: VFC = () => {
               <Route path="/" element={<AccountSelection />} />
               <Route path="/reader_signup" element={<ReaderSignUp />} />
               <Route path="/reader_login" element={<ReaderLogin />} />
-              <Route path="/corder_signup" element={<CorderSignUp />} />
-              <Route path="/corder_login" element={<CorderLogin />} />
+              <Route path="/Coder_signup" element={<CoderSignUp />} />
+              <Route path="/Coder_login" element={<CoderLogin />} />
               <Route path="/timeline" element={<TimeLine />} />
               <Route path="/episode_list/1" element={<EpisodeList1 />} />
               <Route path="/episode_list/2" element={<EpisodeList2 />} />

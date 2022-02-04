@@ -33,7 +33,7 @@ import { auth } from '@lib/firebase'
 import { IFormValues } from '../types/FormValues'
 
 const ReaderSignUp: VFC = () => {
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -61,7 +61,7 @@ const ReaderSignUp: VFC = () => {
       })
   }
 
-  if (corderCurrentUser || readerCurrentUser) {
+  if (coderCurrentUser || readerCurrentUser) {
     return <Navigate to="/timeline" />
   }
 
@@ -90,12 +90,12 @@ const ReaderSignUp: VFC = () => {
         disableElevation
         color="secondary"
         component={Link}
-        to="/corder_signup"
+        to="/coder_signup"
         fullWidth
         sx={{ margin: '32px 0 64px 0' }}
         startIcon={<HistoryEdu />}
       >
-        CORDER SIGN UP
+        CODER SIGN UP
       </Button>
     </SignPaper>
   )

@@ -18,7 +18,7 @@ type LoggedInHeaderProps = {
 const LoggedInHeader: VFC<LoggedInHeaderProps> = (props) => {
   const { handleCloseNavMenu } = props
 
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
@@ -37,7 +37,7 @@ const LoggedInHeader: VFC<LoggedInHeaderProps> = (props) => {
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar
             alt="Logged In User Avater"
-            src={(corderCurrentUser?.fileUrl || readerCurrentUser?.photoURL) ?? ''}
+            src={(coderCurrentUser?.fileUrl || readerCurrentUser?.photoURL) ?? ''}
           />
         </IconButton>
         <Menu

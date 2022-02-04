@@ -25,7 +25,7 @@ import { useAuthContext } from '@contexts/AuthContext'
 import { useOAuthContext } from '@contexts/OAuthContext'
 
 // Lib
-import { corderLogOut } from '@lib/api/auth'
+import { coderLogOut } from '@lib/api/auth'
 import auth from '@lib/firebase'
 
 type LayoutProps = {
@@ -36,12 +36,12 @@ const Layout: VFC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { corderCurrentUser, setIsSignedIn } = useAuthContext()
+  const { coderCurrentUser, setIsSignedIn } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const handleCloseNavMenu = async () => {
-    if (corderCurrentUser) {
-      await corderLogOut()
+    if (coderCurrentUser) {
+      await coderLogOut()
         .then((response) => {
           if (response.data.success === true) {
             // ログアウト出来たらCookieを削除
@@ -74,7 +74,7 @@ const Layout: VFC<LayoutProps> = ({ children }) => {
   }
   return (
     <>
-      {corderCurrentUser || readerCurrentUser ? (
+      {coderCurrentUser || readerCurrentUser ? (
         <LogedInHeader handleCloseNavMenu={handleCloseNavMenu} />
       ) : (
         <BaseHeader />

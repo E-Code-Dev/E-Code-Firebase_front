@@ -36,7 +36,7 @@ import { EpisodeCommentData } from '../types/EpisodeCommentData'
 import { EpisodeData } from '../types/EpisodeData'
 
 const TimeLine: VFC = () => {
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
   const navigate = useNavigate()
 
@@ -63,14 +63,14 @@ const TimeLine: VFC = () => {
   useEffect(() => {
     handleGetEpisodeList()
       .then(() => {
-        if (!corderCurrentUser && !readerCurrentUser) {
+        if (!coderCurrentUser && !readerCurrentUser) {
           navigate('/')
         }
       })
       .catch(() => {
         //
       })
-  }, [corderCurrentUser, readerCurrentUser, navigate])
+  }, [coderCurrentUser, readerCurrentUser, navigate])
 
   const handleEpisodeDelete = async (contents: EpisodeData) => {
     await deleteEpisode(contents.id)
@@ -112,8 +112,8 @@ const TimeLine: VFC = () => {
       })
   }
 
-  const contributorName = corderCurrentUser?.name
-  const contributorImage = corderCurrentUser?.fileUrl
+  const contributorName = coderCurrentUser?.name
+  const contributorImage = coderCurrentUser?.fileUrl
 
   const handleChangeCreateArea = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setEpisodeValue(event.currentTarget.value)
@@ -161,7 +161,7 @@ const TimeLine: VFC = () => {
         episodeDataList={episodeDataList}
         handleEpisodeDelete={handleEpisodeDelete}
         handleEpisodeCommentDelete={handleEpisodeCommentDelete}
-        corderCurrentUser={corderCurrentUser}
+        coderCurrentUser={coderCurrentUser}
         sliceStartNumber={-50}
       />
 

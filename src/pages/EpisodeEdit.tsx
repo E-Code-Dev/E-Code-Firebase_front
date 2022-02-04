@@ -26,7 +26,7 @@ import { useOAuthContext } from '@contexts/OAuthContext'
 import { getEpisodeDetail, updateEpisode } from '@lib/api/episode'
 
 const EpisodeEdit: VFC = () => {
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
@@ -52,14 +52,14 @@ const EpisodeEdit: VFC = () => {
   useEffect(() => {
     handleGetEpisodeData(query)
       .then(() => {
-        if (!corderCurrentUser && !readerCurrentUser) {
+        if (!coderCurrentUser && !readerCurrentUser) {
           navigate('/')
         }
       })
       .catch(() => {
         //
       })
-  }, [corderCurrentUser, readerCurrentUser, navigate, query])
+  }, [coderCurrentUser, readerCurrentUser, navigate, query])
 
   const handleChangeTextArea = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setEpisodeDataValue(event.currentTarget.value)

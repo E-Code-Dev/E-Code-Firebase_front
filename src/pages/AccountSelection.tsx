@@ -11,10 +11,10 @@ import { ECodeIconBox, AccountSelectionHead } from '@styles/pages/AccountSelecti
 import eCodeIcon from '@images/e-code-icon.svg'
 
 const AccountSelection: VFC = () => {
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
-  if (readerCurrentUser || corderCurrentUser) {
+  if (readerCurrentUser || coderCurrentUser) {
     return <Navigate to="/timeline" />
   }
 
@@ -41,11 +41,11 @@ const AccountSelection: VFC = () => {
             variant="contained"
             color="secondary"
             component={Link}
-            to="/corder_signup"
+            to="/coder_signup"
             startIcon={<HistoryEdu />}
             fullWidth
           >
-            E-CORDER
+            E-CODER
           </Button>
         </Stack>
       </Stack>

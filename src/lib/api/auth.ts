@@ -3,39 +3,37 @@ import { AxiosResponse } from 'axios'
 
 import Cookies from 'js-cookie'
 
-import { CorderSignUpParams, CorderLogInParams, CorderUser } from '@interfaces/index'
+import { CoderSignUpParams, CoderLogInParams, CoderUser } from '@interfaces/index'
 
 import client from './client'
 
-type corderSignUpProps = {
-  data: SetStateAction<CorderUser | undefined>
+type coderSignUpProps = {
+  data: SetStateAction<CoderUser | undefined>
 }
 
-// Sign Up(Corder)
-export const corderSignUp = (
-  params: CorderSignUpParams
-): Promise<AxiosResponse<corderSignUpProps>> => {
+// Sign Up(Coder)
+export const coderSignUp = (
+  params: CoderSignUpParams
+): Promise<AxiosResponse<coderSignUpProps>> => {
   return client.post('auth', params)
 }
 
-type corderLogInProps = {
-  data: SetStateAction<CorderUser | undefined>
+type coderLogInProps = {
+  data: SetStateAction<CoderUser | undefined>
 }
 
-// Log In(Corder)
-export const corderLogIn = (
-  params: CorderLogInParams
-): Promise<AxiosResponse<corderLogInProps>> => {
+// Log In(Coder)
+export const coderLogIn = (params: CoderLogInParams): Promise<AxiosResponse<coderLogInProps>> => {
   return client.post('auth/sign_in', params)
 }
 
-type corderLogOutProps = {
+type coderLogOutProps = {
   success: boolean
-  data: SetStateAction<CorderUser | undefined>
+  data: SetStateAction<CoderUser | undefined>
 }
 
-// Sign Out(Corder)
-export const corderLogOut = (): Promise<AxiosResponse<corderLogOutProps>> => {
+// Sign Out(Coder)
+export const coderLogOut = (): Promise<AxiosResponse<coderLogOutProps>> => {
   return client.delete('auth/sign_out', {
     headers: {
       'access-token': Cookies.get('_access_token') ?? '',
@@ -47,7 +45,7 @@ export const corderLogOut = (): Promise<AxiosResponse<corderLogOutProps>> => {
 
 type getCurrentUserProps = {
   isLogin: boolean
-  data: SetStateAction<CorderUser | undefined>
+  data: SetStateAction<CoderUser | undefined>
   message: string
 }
 

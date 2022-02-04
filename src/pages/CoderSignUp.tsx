@@ -28,7 +28,7 @@ import BaseUpLoadImgButton from '@components/BaseUpLoadImgButton'
 import SignPaper from '@components/SignPaper'
 
 // Containers
-import CorderSignUpModal from '@containers/CorderSignUpModal'
+import CoderSignUpModal from '@containers/CoderSignUpModal'
 
 // Contexts
 import { useAuthContext } from '@contexts/AuthContext'
@@ -37,8 +37,8 @@ import { useOAuthContext } from '@contexts/OAuthContext'
 // Types
 import { IFormValues } from '../types/FormValues'
 
-const CorderSignUp: VFC = () => {
-  const { corderCurrentUser } = useAuthContext()
+const CoderSignUp: VFC = () => {
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const [userName, setUserName] = useState('')
@@ -110,7 +110,7 @@ const CorderSignUp: VFC = () => {
     setShowModal(false)
   }
 
-  if (corderCurrentUser || readerCurrentUser) {
+  if (coderCurrentUser || readerCurrentUser) {
     return <Navigate to="/timeline" />
   }
 
@@ -161,11 +161,11 @@ const CorderSignUp: VFC = () => {
           startIcon={<HistoryEdu />}
           sx={{ marginTop: '32px' }}
         >
-          CORDER SIGN UP
+          CODER SIGN UP
         </Button>
       </form>
-      <Button component={Link} to="/corder_login" fullWidth sx={{ marginTop: '32px' }}>
-        CORDER LOG IN
+      <Button component={Link} to="/coder_login" fullWidth sx={{ marginTop: '32px' }}>
+        CODER LOG IN
       </Button>
       <Button
         variant="contained"
@@ -179,7 +179,7 @@ const CorderSignUp: VFC = () => {
         READER SIGN UP
       </Button>
 
-      <CorderSignUpModal
+      <CoderSignUpModal
         imagePath={imagePath}
         imageUrl={fileUrl}
         userName={userName}
@@ -194,4 +194,4 @@ const CorderSignUp: VFC = () => {
   )
 }
 
-export default CorderSignUp
+export default CoderSignUp

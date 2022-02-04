@@ -6,7 +6,7 @@ import type { VFC, ReactNode, Dispatch, SetStateAction } from 'react'
 import Progress from '@components/Progress/intex'
 
 // Interfaces
-import { CorderUser } from '@interfaces/index'
+import { CoderUser } from '@interfaces/index'
 
 // Lib
 import { getCurrentUser } from '@lib/api/auth'
@@ -15,8 +15,8 @@ export const AuthContext = createContext(
   {} as {
     isSignedIn: boolean
     setIsSignedIn: Dispatch<SetStateAction<boolean>>
-    corderCurrentUser: CorderUser | undefined
-    setCorderCurrentUser: Dispatch<SetStateAction<CorderUser | undefined>>
+    coderCurrentUser: CoderUser | undefined
+    setCoderCurrentUser: Dispatch<SetStateAction<CoderUser | undefined>>
   }
 )
 
@@ -31,7 +31,7 @@ type AuthContextProviderProps = {
 export const AuthContextProvider: VFC<AuthContextProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true)
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
-  const [corderCurrentUser, setCorderCurrentUser] = useState<CorderUser | undefined>()
+  const [coderCurrentUser, setCoderCurrentUser] = useState<CoderUser | undefined>()
 
   // ログイン済みのユーザーがいるかどうかチェックし、確認できた場合はそのユーザーの情報を取得
   const handleGetCurrentUser = async () => {
@@ -39,7 +39,7 @@ export const AuthContextProvider: VFC<AuthContextProviderProps> = ({ children })
       const response = await getCurrentUser()
       if (response?.data.isLogin === true) {
         setIsSignedIn(true)
-        setCorderCurrentUser(response?.data.data)
+        setCoderCurrentUser(response?.data.data)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -51,10 +51,10 @@ export const AuthContextProvider: VFC<AuthContextProviderProps> = ({ children })
     return {
       isSignedIn,
       setIsSignedIn,
-      corderCurrentUser,
-      setCorderCurrentUser
+      coderCurrentUser,
+      setCoderCurrentUser
     }
-  }, [isSignedIn, setIsSignedIn, corderCurrentUser, setCorderCurrentUser])
+  }, [isSignedIn, setIsSignedIn, coderCurrentUser, setCoderCurrentUser])
 
   useEffect(() => {
     handleGetCurrentUser()
@@ -65,7 +65,7 @@ export const AuthContextProvider: VFC<AuthContextProviderProps> = ({ children })
         //
       })
     setLoading(false)
-  }, [setCorderCurrentUser])
+  }, [setCoderCurrentUser])
 
   if (loading) {
     return <Progress />

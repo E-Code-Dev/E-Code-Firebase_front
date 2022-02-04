@@ -5,7 +5,7 @@ import { Avatar, IconButton, Stack } from '@mui/material'
 import { Delete } from '@mui/icons-material'
 
 // Interfaces
-import { CorderUser } from '@interfaces/index'
+import { CoderUser } from '@interfaces/index'
 
 // Styles
 import {
@@ -21,10 +21,10 @@ import { EpisodeCommentData } from '../types/EpisodeCommentData'
 type EpisodeCommentsProps = {
   episodeComments: EpisodeCommentData[] | null | undefined
   handleEpisodeCommentDelete: (data: EpisodeCommentData) => Promise<void>
-  corderCurrentUser: CorderUser | undefined
+  coderCurrentUser: CoderUser | undefined
 }
 const EpisodeComments: VFC<EpisodeCommentsProps> = (props) => {
-  const { episodeComments, handleEpisodeCommentDelete, corderCurrentUser } = props
+  const { episodeComments, handleEpisodeCommentDelete, coderCurrentUser } = props
 
   return (
     <div>
@@ -49,7 +49,7 @@ const EpisodeComments: VFC<EpisodeCommentsProps> = (props) => {
                   <CommentContent>{content}</CommentContent>
                   <CommentContentDate>{date}</CommentContentDate>
                 </div>
-                {corderCurrentUser?.id === userId ? (
+                {coderCurrentUser?.id === userId ? (
                   <IconButton
                     onClick={() => {
                       return handleEpisodeCommentDelete(data)

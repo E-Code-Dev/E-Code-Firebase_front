@@ -24,19 +24,19 @@ import { useAuthContext } from '@contexts/AuthContext'
 import { useOAuthContext } from '@contexts/OAuthContext'
 
 // Interfaces
-import { CorderLogInParams } from '@interfaces/index'
+import { CoderLogInParams } from '@interfaces/index'
 
 // Lib
-import { corderLogIn } from '@lib/api/auth'
+import { coderLogIn } from '@lib/api/auth'
 
 // Types
 import { IFormValues } from '../types/FormValues'
 
-const CorderLogIn: VFC = () => {
+const CoderLogIn: VFC = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { corderCurrentUser, setCorderCurrentUser, setIsSignedIn } = useAuthContext()
+  const { coderCurrentUser, setCoderCurrentUser, setIsSignedIn } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const {
@@ -48,12 +48,12 @@ const CorderLogIn: VFC = () => {
   const onSubmit: SubmitHandler<IFormValues> = async (data) => {
     const { email, password } = data
 
-    const params: CorderLogInParams = {
+    const params: CoderLogInParams = {
       email,
       password
     }
 
-    await corderLogIn(params)
+    await coderLogIn(params)
       .then((response) => {
         const { status, headers } = response
         if (status === 200) {
@@ -62,7 +62,7 @@ const CorderLogIn: VFC = () => {
           Cookies.set('_uid', headers.uid)
 
           setIsSignedIn(true)
-          setCorderCurrentUser(response.data.data)
+          setCoderCurrentUser(response.data.data)
           navigate('/timeline')
         }
       })
@@ -73,7 +73,7 @@ const CorderLogIn: VFC = () => {
       })
   }
 
-  if (corderCurrentUser || readerCurrentUser) {
+  if (coderCurrentUser || readerCurrentUser) {
     return <Navigate to="/timeline" />
   }
 
@@ -89,10 +89,10 @@ const CorderLogIn: VFC = () => {
         onClick={handleSubmit(onSubmit)}
         sx={{ marginTop: '32px' }}
       >
-        CORDER LOG IN
+        CODER LOG IN
       </Button>
-      <Button component={Link} to="/corder_signup" fullWidth sx={{ marginTop: '32px' }}>
-        CORDER SIGN UP
+      <Button component={Link} to="/coder_signup" fullWidth sx={{ marginTop: '32px' }}>
+        CODER SIGN UP
       </Button>
       <Button
         variant="contained"
@@ -109,4 +109,4 @@ const CorderLogIn: VFC = () => {
   )
 }
 
-export default CorderLogIn
+export default CoderLogIn
