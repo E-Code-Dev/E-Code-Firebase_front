@@ -38,7 +38,7 @@ const EpisodeDetail: VFC = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const [episodeCommentValue, setEpisodeCommentValue] = useState('')
@@ -46,8 +46,8 @@ const EpisodeDetail: VFC = () => {
 
   const [episodeData, setEpisodeData] = useState<EpisodeData | undefined>()
 
-  const contributorName = corderCurrentUser?.name
-  const contributorImage = corderCurrentUser?.fileUrl
+  const contributorName = coderCurrentUser?.name
+  const contributorImage = coderCurrentUser?.fileUrl
 
   const query = useParams()
 
@@ -96,7 +96,7 @@ const EpisodeDetail: VFC = () => {
   useEffect(() => {
     handleGetEpisodeDetail(query)
       .then(() => {
-        if (!corderCurrentUser && !readerCurrentUser) {
+        if (!coderCurrentUser && !readerCurrentUser) {
           navigate('/')
         }
       })
@@ -105,7 +105,7 @@ const EpisodeDetail: VFC = () => {
           setErrorMessage('エピソードの詳細を取得することができませんでした')
         }
       })
-  }, [corderCurrentUser, readerCurrentUser, navigate, query])
+  }, [coderCurrentUser, readerCurrentUser, navigate, query])
 
   const handleEpisodeCommentDelete = async (data: EpisodeCommentData) => {
     await deleteEpisodeComment(data.id)
@@ -152,7 +152,7 @@ const EpisodeDetail: VFC = () => {
           <Box sx={{ fontSize: '14px', marginTop: '32px' }}>{episodeData?.createdAt}</Box>
         </Box>
 
-        {corderCurrentUser && (
+        {coderCurrentUser && (
           <>
             <form>
               <EpisodeTextArea onChange={handleChangeCreateArea} />
@@ -172,7 +172,7 @@ const EpisodeDetail: VFC = () => {
           <EpisodeComments
             episodeComments={episodeData?.episodeComments}
             handleEpisodeCommentDelete={handleEpisodeCommentDelete}
-            corderCurrentUser={corderCurrentUser}
+            coderCurrentUser={coderCurrentUser}
           />
         </Box>
       </EpisodeDetailPaper>

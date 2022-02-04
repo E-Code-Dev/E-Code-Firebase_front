@@ -27,7 +27,7 @@ import type { EpisodeData } from '../types/EpisodeData'
 const EpisodeList1: VFC = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
   const { readerCurrentUser } = useOAuthContext()
 
   const [episodeDataList, setEpisodeDataList] = useState<EpisodeData[] | undefined>([])
@@ -47,14 +47,14 @@ const EpisodeList1: VFC = () => {
   useEffect(() => {
     handleGetEpisodeList()
       .then(() => {
-        if (!corderCurrentUser && !readerCurrentUser) {
+        if (!coderCurrentUser && !readerCurrentUser) {
           navigate('/')
         }
       })
       .catch(() => {
         //
       })
-  }, [corderCurrentUser, readerCurrentUser, navigate])
+  }, [coderCurrentUser, readerCurrentUser, navigate])
 
   const handleEpisodeDelete = async (contents: EpisodeData) => {
     await deleteEpisode(contents.id)
@@ -106,7 +106,7 @@ const EpisodeList1: VFC = () => {
         episodeDataList={episodeDataList}
         handleEpisodeDelete={handleEpisodeDelete}
         handleEpisodeCommentDelete={handleEpisodeCommentDelete}
-        corderCurrentUser={corderCurrentUser}
+        coderCurrentUser={coderCurrentUser}
         sliceStartNumber={-50}
       />
     </Layout>

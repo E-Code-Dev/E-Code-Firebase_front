@@ -17,7 +17,7 @@ import { Close, Done } from '@mui/icons-material'
 import Cookies from 'js-cookie'
 
 // Styles
-import { DoneButton, ProfileButton, ProfileCard, ProfileText } from '@styles/corderSignUpModal'
+import { DoneButton, ProfileButton, ProfileCard, ProfileText } from '@styles/coderSignUpModal'
 
 // Components
 import BaseModal from '@components/BaseModal'
@@ -26,10 +26,10 @@ import BaseModal from '@components/BaseModal'
 import { useAuthContext } from '@contexts/AuthContext'
 
 // Interfaces
-import { CorderSignUpParams } from '@interfaces/index'
+import { CoderSignUpParams } from '@interfaces/index'
 
 // Lib
-import { corderSignUp } from '@lib/api/auth'
+import { coderSignUp } from '@lib/api/auth'
 
 // Types
 import { IFormValues } from '../types/FormValues'
@@ -62,7 +62,7 @@ const CreateAccountModal: VFC<CreateAccountModalProps> = (props) => {
     onClick
   } = props
 
-  const { setIsSignedIn, setCorderCurrentUser } = useAuthContext()
+  const { setIsSignedIn, setCoderCurrentUser } = useAuthContext()
 
   const modalFileUrl = imageUrl
   const modalUserName = userName
@@ -76,7 +76,7 @@ const CreateAccountModal: VFC<CreateAccountModalProps> = (props) => {
   const onSubmit: SubmitHandler<IFormValues> = async (data) => {
     const { name, email, password, passwordConfirmation, birthDay, fileUrl } = data
 
-    const params: CorderSignUpParams = {
+    const params: CoderSignUpParams = {
       name,
       email,
       password,
@@ -86,7 +86,7 @@ const CreateAccountModal: VFC<CreateAccountModalProps> = (props) => {
     }
 
     try {
-      const response = await corderSignUp(params)
+      const response = await coderSignUp(params)
 
       if (response.status === 200) {
         // アカウント作成に成功したらCookieを格納
@@ -95,7 +95,7 @@ const CreateAccountModal: VFC<CreateAccountModalProps> = (props) => {
         Cookies.set('_uid', response.headers.uid)
 
         setIsSignedIn(true)
-        setCorderCurrentUser(response.data.data)
+        setCoderCurrentUser(response.data.data)
 
         navigate('/timeline')
       }

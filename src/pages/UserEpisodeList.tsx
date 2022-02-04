@@ -29,22 +29,22 @@ import { EpisodeCommentData } from 'src/types/EpisodeCommentData'
 const UserEpisodeList: VFC = () => {
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { isSignedIn, corderCurrentUser } = useContext(AuthContext)
+  const { isSignedIn, coderCurrentUser } = useContext(AuthContext)
   const { readerCurrentUser } = useContext(OAuthContext)
 
   const [userEpisodes, setUserEpisodes] = useState<EpisodeData[] | undefined>([])
 
   const handleGetUserEpisodes = useCallback(async () => {
-    if (corderCurrentUser?.id) {
+    if (coderCurrentUser?.id) {
       if (isSignedIn) {
-        const response = await getUserEpisodes(corderCurrentUser?.id)
+        const response = await getUserEpisodes(coderCurrentUser?.id)
         setUserEpisodes(response.data)
       } else {
-        return <Navigate to="/corder_login" />
+        return <Navigate to="/coder_login" />
       }
     }
     return false
-  }, [corderCurrentUser?.id, isSignedIn])
+  }, [coderCurrentUser?.id, isSignedIn])
 
   const handleEpisodeDelete = useMemo(() => {
     return async (contents: EpisodeData) => {
@@ -96,7 +96,7 @@ const UserEpisodeList: VFC = () => {
       .catch(() => {
         //
       })
-  }, [corderCurrentUser, handleGetUserEpisodes])
+  }, [coderCurrentUser, handleGetUserEpisodes])
 
   const UserEpisodeCard = () => {
     return useMemo(() => {
@@ -106,7 +106,7 @@ const UserEpisodeList: VFC = () => {
             <EpisodeListCard
               episodeDataList={userEpisodes}
               handleEpisodeDelete={handleEpisodeDelete}
-              corderCurrentUser={corderCurrentUser}
+              coderCurrentUser={coderCurrentUser}
               handleEpisodeCommentDelete={handleEpisodeCommentDelete}
             />
           )

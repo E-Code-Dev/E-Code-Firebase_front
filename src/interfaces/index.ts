@@ -1,5 +1,5 @@
-// Sign Up(Corder)
-export interface CorderSignUpParams {
+// Sign Up(Coder)
+export interface CoderSignUpParams {
   name: string
   email: string
   password: string
@@ -8,14 +8,14 @@ export interface CorderSignUpParams {
   fileUrl: string
 }
 
-// Log In(Corder)
-export interface CorderLogInParams {
+// Log In(Coder)
+export interface CoderLogInParams {
   email: string
   password: string
 }
 
-// User(Corder)
-export interface CorderUser {
+// User(Coder)
+export interface CoderUser {
   id: number
   uid: string
   provider: string

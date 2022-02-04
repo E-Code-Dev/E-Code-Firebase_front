@@ -24,7 +24,7 @@ import { ContributorInfo, ContributorInfoName } from '@styles/episodeListCard'
 import EpisodeComments from '@containers/EpisodeComments'
 
 // Interfaces
-import { CorderUser } from '@interfaces/index'
+import { CoderUser } from '@interfaces/index'
 
 // Types
 import { EpisodeCommentData } from '../types/EpisodeCommentData'
@@ -34,7 +34,7 @@ type EpisodeListCardProps = {
   episodeDataList: EpisodeData[] | undefined
   handleEpisodeDelete: (contents: EpisodeData) => Promise<void>
   handleEpisodeCommentDelete: (data: EpisodeCommentData) => Promise<void>
-  corderCurrentUser: CorderUser | undefined
+  coderCurrentUser: CoderUser | undefined
 
   sliceStartNumber?: number | undefined
   sliceEndNumber?: number | undefined
@@ -45,7 +45,7 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
     episodeDataList,
     handleEpisodeDelete,
     handleEpisodeCommentDelete,
-    corderCurrentUser,
+    coderCurrentUser,
     sliceStartNumber,
     sliceEndNumber
   } = props
@@ -97,7 +97,7 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
                       <p>{content}</p>
                     </LinkText>
                     <p>{date}</p>
-                    {corderCurrentUser?.id === userId ? (
+                    {coderCurrentUser?.id === userId ? (
                       <IconButton component={Link} to={`/episode_edit/${id}`}>
                         <Edit />
                       </IconButton>
@@ -107,7 +107,7 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
                       </IconButton>
                     )}
 
-                    {corderCurrentUser?.id === userId ? (
+                    {coderCurrentUser?.id === userId ? (
                       <IconButton
                         onClick={() => {
                           return handleEpisodeDelete(contents)
@@ -126,7 +126,7 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
 
                 <AccordionDetails>
                   <EpisodeComments
-                    corderCurrentUser={corderCurrentUser}
+                    coderCurrentUser={coderCurrentUser}
                     episodeComments={episodeComments}
                     handleEpisodeCommentDelete={handleEpisodeCommentDelete}
                   />

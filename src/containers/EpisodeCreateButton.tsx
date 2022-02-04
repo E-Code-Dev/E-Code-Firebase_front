@@ -12,11 +12,11 @@ type EpisodeCreateButtonProps = {
 
 const EpisodeCreateButton: VFC<EpisodeCreateButtonProps> = (props) => {
   const { onClick } = props
-  const { corderCurrentUser } = useAuthContext()
+  const { coderCurrentUser } = useAuthContext()
 
   return (
     <div>
-      {corderCurrentUser && (
+      {coderCurrentUser && (
         <EpiCreateButton onClick={onClick} color="secondary">
           <HistoryEdu />
         </EpiCreateButton>
