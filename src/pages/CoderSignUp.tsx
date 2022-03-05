@@ -123,9 +123,9 @@ const CoderSignUp: VFC = () => {
         <Stack spacing={1}>
           <Box sx={{ marginTop: '8px' }}>
             <BaseInput
-              fieldLabel="passwordConfirmation"
               type="password"
               label="passwordConfirmation"
+              fieldLabel="パスワード（再確認）"
               register={register}
               requiredFlag
             />
@@ -139,12 +139,12 @@ const CoderSignUp: VFC = () => {
             ICON SELECT
           </BaseUpLoadImgButton>
           {errors.name?.type === 'required' && <p>名前が入力されていません</p>}
-          <BaseInput fieldLabel="name" label="name" register={register} requiredFlag />
+          <BaseInput label="name" fieldLabel="名前" register={register} requiredFlag />
           {errors.birthDay?.type === 'required' && <p>誕生日が入力されていません</p>}
           <BaseInput
             type="date"
             label="birthDay"
-            fieldLabel="birthday"
+            fieldLabel="誕生日"
             register={register}
             requiredFlag
             defaultValue="2000-01-01"
