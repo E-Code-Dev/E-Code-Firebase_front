@@ -40,17 +40,17 @@ const SignPaper: VFC<SignPaperProps> = (props) => {
             <Stack spacing={1}>
               {errors.email?.type === 'required' && <p>メールアドレスが入力されていません</p>}
               <BaseInput
-                fieldLabel="email"
                 placeholder="example@example.com"
                 label="email"
+                fieldLabel="メールアドレス"
                 register={register}
                 requiredFlag
               />
               {errors.password?.type === 'required' && <p>パスワードが入力されていません</p>}
               <BaseInput
-                fieldLabel="password"
                 type="password"
                 label="password"
+                fieldLabel="パスワード"
                 register={register}
                 requiredFlag
               />
