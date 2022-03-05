@@ -25,7 +25,6 @@ const AccountSelection: VFC = () => {
           <ECodeIconBox>
             <img src={eCodeIcon} alt="E-Codeのアイコン" />
           </ECodeIconBox>
-          <AccountSelectionHead>E-Codeへようこそ</AccountSelectionHead>
         </Paper>
         <Stack direction="row" spacing={4}>
           <Button
