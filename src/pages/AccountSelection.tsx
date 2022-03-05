@@ -6,7 +6,7 @@ import { Button, Container, Paper, Stack } from '@mui/material'
 import { useOAuthContext } from '@contexts/OAuthContext'
 import { useAuthContext } from '@contexts/AuthContext'
 import { AutoStories, HistoryEdu } from '@mui/icons-material'
-import { ECodeIconBox, AccountSelectionHead } from '@styles/pages/AccountSelectionStyled'
+import { ECodeIconBox } from '@styles/pages/AccountSelectionStyled'
 
 import eCodeIcon from '@images/e-code-icon.svg'
 
