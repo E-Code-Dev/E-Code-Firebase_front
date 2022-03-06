@@ -149,7 +149,14 @@ const EpisodeDetail: VFC = () => {
 
         <Box sx={{ margin: '32px 0' }}>
           <div id="episodeContent" />
-          <Box sx={{ fontSize: '14px', marginTop: '32px' }}>{episodeData?.createdAt}</Box>
+          <Box sx={{ fontSize: '14px', marginTop: '32px' }}>
+            {episodeData?.createdAt
+              .toString()
+              .replace('T', ' ')
+              .split('.')
+              .shift()
+              ?.replace(/-/g, '/')}
+          </Box>
         </Box>
 
         {coderCurrentUser && (
