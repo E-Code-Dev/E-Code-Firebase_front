@@ -52,7 +52,7 @@ const EpisodeListCard: VFC<EpisodeListCardProps> = (props) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-      <Stack spacing={2}>
+      <Stack spacing={3}>
         {episodeDataList
           ?.slice(sliceStartNumber, sliceEndNumber)
           .reverse()
