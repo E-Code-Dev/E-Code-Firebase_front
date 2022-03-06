@@ -34,7 +34,7 @@ const AccountSelection: VFC = () => {
             startIcon={<AutoStories />}
             fullWidth
           >
-            E-READER
+            READER
           </Button>
           <Button
             variant="contained"
@@ -44,7 +44,7 @@ const AccountSelection: VFC = () => {
             startIcon={<HistoryEdu />}
             fullWidth
           >
-            E-CODER
+            CODER
           </Button>
         </Stack>
       </Stack>
